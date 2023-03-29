@@ -39,6 +39,7 @@ while(properInput != 0){
             {
                 printf("Invalid input, please put a 1 or a 2\n"); 
         }
+        }
         else
         {
             printf("Invalid input, please enter a number\n"); 

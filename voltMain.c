@@ -9,7 +9,7 @@ int main(int argc, char **argv) {
 
 //make resistor array
     //probably doubles
-//make user input for battery voltage & ressitors
+//make user input for battery voltage & resistors
 
 //make final print statements
 

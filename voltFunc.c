@@ -4,18 +4,26 @@
 #include <math.h>
 
 #include "voltFunc.h"
-//chole, 
-//i will test these functions when i finish the main, dont worry about testing them just write the code that
-//should go inside them
 
-
-//make it calculate total resistence
+//calculates total resistence
+// *DELETE* I was not sure which variable was used to decide circuit type.
 double totalResistence (double *arr, int type)
 {
-
+  double total = 0;
+  for (i = 0; i < type; i++) {
+    if (circuitType == 1) { 
+      total = arr[i] + total;
+    }
+    else if (circuitType == 2) {  
+      total = (1 / arr[i]) + total;  
+    }
+  }
+  return total;
 }
-//make it calculate the current using total resistence and voltage
+
+//calculates the current using total resistence and voltage
 double circuitCurrent (double totalResistence, double voltage)
 {
-
+  double current = voltage / totalResistance(arr, type);
+  return current;
 }

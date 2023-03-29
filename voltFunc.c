@@ -4,7 +4,11 @@
 #include <math.h>
 
 #include "voltFunc.h"
-//your job should be self explanitory
+//chole, 
+//i will test these functions when i finish the main, dont worry about testing them just write the code that
+//should go inside them
+
+
 //make it calculate total resistence
 double totalResistence (double *arr, int type)
 {

@@ -12,15 +12,15 @@ double totalResistence (double *arr, int type, int rNumber)
   double total = 0;
   double inverseTotal = 0;
   
-  for (int i = 0; i < rNumber; i++) {
-    if (type == 1) { 
+  for (int i = 0; i < rNumber; i++) { 
+    if (type == 1) { //series
       total = arr[i] + total;
     }
-    else if (type == 2) {  
+    else if (type == 2) {  //parallel
       total = (1.0 / arr[i]) + total;  
     }
   }
-  if (type == 2)
+  if (type == 2) //find the total resistence by taking the inverse of the summation in a parallel circuit
   {
     inverseTotal = 1 / total;
     return inverseTotal;
@@ -31,17 +31,18 @@ double totalResistence (double *arr, int type, int rNumber)
 //calculates the current using total resistence and voltage
 double circuitCurrent (double totalResistence, double voltage)
 {
+    //uses ohms law
   double current = voltage / totalResistence;
   return current;
 }
 
 double inputFunction (int type)
 {
-    int properInput = 1;
-char * collecter = malloc(sizeof(char) * 15);
-int input;
+int properInput = 1; //loop condition
+char * collecter = malloc(sizeof(char) * 15); //defines the collecter variable, used to temporarily stor input
+int input; //used for just the circuit type
 if(type == 0)
-{ 
+{ //circuit type input
 //printf("please enter the type of resistor: 1 for Series 2 for Parallel\n");
 while(properInput != 0){ 
     scanf("%s", collecter);
@@ -52,11 +53,12 @@ while(properInput != 0){
         if (isdigit(collecter[i])) 
         {
             input = collecter[0];
-            input = input - 48; 
+            input = input - 48; //converts from ascci into a number
             if((input == 1) || (input == 2)) 
             {
-                properInput = 0; 
-                 continue;
+                free(collecter); //frees collecter before terminating the function
+                return input;
+                
             }
             else
             {
@@ -72,17 +74,17 @@ while(properInput != 0){
         printf("Invalid Input, please only put 1 digit\n"); 
     }
     }
-    //free(collecter);
-    return input;
+    
+    
 
 }
-else if (type == 2) {
-   // printf("please enter the number of resistors (max of 100)\n");
+else if (type == 2) {// used for resistor number
+   // printf("please enter the number of resistors (max of 100)\n"); : used for testing
 while(properInput != 0){ 
     scanf("%s", collecter);
-    int i;
-    char *temp;
-    int condition = 0; 
+    int i; //loop variable
+    char *temp; //used for strtol function
+    int condition = 0; //keeps track of validity of the input
      
     for(i = 0; i < strlen(collecter); ++i)
     {
@@ -96,39 +98,36 @@ while(properInput != 0){
         input = strtol(collecter, &temp, 10);
         if((input >= 0) && (input <= 100)) 
         {
-            properInput = 0; 
-            continue;
+            free(collecter);
+            return input;
         }
-        else
+        else //if the integer is outside of the parameters
         {     
             printf("Invalid input, please enter within the parameters\n"); 
         }
             
     }
-    else if (condition == 1)
+    else if (condition == 1) //if there is a non integer within the input
     {
         printf("Invalid input, please enter a positive integer\n"); 
     }
         
         
     }
-    //free(collecter);
-    return input;
+    
     }
     
 
 
 else {
-    //printf("please enter voltage of the source\n");
-    //printf("%s\n", collecter);
-    //int deciCounter = 0;
-    int i;
-    char *temp; 
+    
+    int i; //used for the for loop
+    char *temp; //used for strtod
     
     while(properInput != 0){
-    int condition = 0;
-    int deciCounter = 0;
-    //printf("%s\n", collecter);
+    int condition = 0; //keeps track of any non integer characters
+    int deciCounter = 0; //if this is greater than 1 the input is invalid
+    
     scanf("%s", collecter); 
     for(i = 0; i < strlen(collecter); ++i) 
     {
@@ -150,11 +149,9 @@ else {
     }
     if (condition == 0 && (deciCounter < 2))
     { 
-    //printf("you made it\n");
     input = strtod(collecter, &temp); 
-    //properInput = 0;
+    free(collecter);
     return input;
-    //continue;
     }
     else
     {

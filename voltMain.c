@@ -30,7 +30,7 @@ voltage = inputFunction(1);
 //printf("%lf\n", voltage);
 printf("please enter the number of resistors (max of 100)\n");
 resistorNumber = inputFunction(2);
-printf("%d\n",resistorNumber);
+//printf("%d\n",resistorNumber);
 
 
 
@@ -47,9 +47,10 @@ int k = 0;
 int l = 0;
 int m = 0;
 int deciNum = 0;
-int condition = 1;
+//int condition = 1;
 while (i < resistorNumber) 
 {
+    int condition = 1;
     printf("please enter the value of resistor %d:   ", i+1);
     scanf("%s", collecter);
     for(j = 0; j < strlen(collecter); ++j)

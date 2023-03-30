@@ -72,7 +72,7 @@ while(properInput != 0){
         printf("Invalid Input, please only put 1 digit\n"); 
     }
     }
-    free(collecter);
+    //free(collecter);
     return input;
 
 }
@@ -112,7 +112,7 @@ while(properInput != 0){
         
         
     }
-    free(collecter);
+    //free(collecter);
     return input;
     }
     
@@ -120,12 +120,15 @@ while(properInput != 0){
 
 else {
     //printf("please enter voltage of the source\n");
-    int deciCounter = 0;
+    //printf("%s\n", collecter);
+    //int deciCounter = 0;
     int i;
     char *temp; 
-    int condition = 0;
-    int dashCounter = 0;
+    
     while(properInput != 0){
+    int condition = 0;
+    int deciCounter = 0;
+    //printf("%s\n", collecter);
     scanf("%s", collecter); 
     for(i = 0; i < strlen(collecter); ++i) 
     {
@@ -134,10 +137,6 @@ else {
             if(collecter[i] == '.')
             {
                 deciCounter++; 
-            }
-            else if(collecter[i] == '-')
-            {
-                dashCounter++;
             }
             else
             {
@@ -149,15 +148,17 @@ else {
         }
 
     }
-    if (condition == 0 && (deciCounter < 2) && dashCounter == 0)
+    if (condition == 0 && (deciCounter < 2))
     { 
-    
+    //printf("you made it\n");
     input = strtod(collecter, &temp); 
+    //properInput = 0;
     return input;
+    //continue;
     }
     else
     {
-        printf("your input contained: either a letter, too many decimal characters, or was negativeThis is not allowed, please try again\n"); 
+        printf("your input contained: either a letter, too many decimal characters, or was negative \nThis is not allowed, please try again\n"); 
     }
 }
 }

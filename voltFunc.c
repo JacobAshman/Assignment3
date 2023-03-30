@@ -42,7 +42,7 @@ char * collecter = malloc(sizeof(char) * 15);
 int input;
 if(type == 0)
 { 
-printf("please enter the type of resistor: 1 for Series 2 for Parallel\n");
+//printf("please enter the type of resistor: 1 for Series 2 for Parallel\n");
 while(properInput != 0){ 
     scanf("%s", collecter);
     int i;
@@ -77,10 +77,11 @@ while(properInput != 0){
 
 }
 else if (type == 2) {
-    printf("please enter the number of resistors (max of 100)\n");
+   // printf("please enter the number of resistors (max of 100)\n");
 while(properInput != 0){ 
     scanf("%s", collecter);
     int i;
+    char *temp;
     int condition = 0; 
      
     for(i = 0; i < strlen(collecter); ++i)
@@ -92,8 +93,7 @@ while(properInput != 0){
     }
     if(condition == 0)
     {   
-        input = collecter[0];
-        input = input - 48; 
+        input = strtol(collecter, &temp, 10);
         if((input >= 0) && (input <= 100)) 
         {
             properInput = 0; 
@@ -119,7 +119,7 @@ while(properInput != 0){
 
 
 else {
-    printf("please enter voltage of the source\n");
+    //printf("please enter voltage of the source\n");
     int deciCounter = 0;
     int i;
     char *temp; 
